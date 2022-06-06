@@ -4,7 +4,13 @@ import { BsPlusCircle } from "react-icons/bs";
 import { RiGalleryLine } from "react-icons/ri";
 import { AiFillGift } from "react-icons/ai";
 
-const MessageSend = () => {
+const MessageSend = ({
+  inputHandle,
+  newMessage,
+  sendMessage,
+  emojiSend,
+  ImageSend,
+}) => {
   const emojis = [
     "😀",
     "😄",
@@ -36,7 +42,12 @@ const MessageSend = () => {
       </div>
       <div className="file hover-image">
         <div className="add-image">Add Image</div>
-        <input type="file" id="pic" className="form-control" />
+        <input
+          onChange={ImageSend}
+          type="file"
+          id="pic"
+          className="form-control"
+        />
         <label htmlFor="pic">
           <RiGalleryLine />
         </label>
@@ -50,19 +61,27 @@ const MessageSend = () => {
       </div>
       <div className="message-type">
         <input
+          onChange={inputHandle}
           type="text"
           name="message"
           id="message"
           placeholder="Aa"
+          value={newMessage}
           className="form-control"
         />
         <label htmlFor="emoji">🙂</label>
       </div>
-      <div className="file">❤️</div>
+      <div onClick={sendMessage} className="file">
+        ❤️
+      </div>
       <div className="emoji-section">
         <div className="emoji">
           {emojis.map((emoji, index) => {
-            return <span key={index}>{emoji}</span>;
+            return (
+              <span onClick={() => emojiSend(emoji)} key={index}>
+                {emoji}
+              </span>
+            );
           })}
         </div>
       </div>

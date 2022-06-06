@@ -6,7 +6,7 @@
   &::-webkit-scrollbar {
     overflow: hidden;
   }
-  .hover-friend.active {
+  .hover-friend:active {
     background-color: rgba(43, 51, 85, 0.568);
   }
   .hover-friend {
