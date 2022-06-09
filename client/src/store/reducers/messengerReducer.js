@@ -3,6 +3,7 @@ import {
   MESSAGE_GET_SUCCESS,
   MESSAGE_SEND_SUCCESS,
   IMAGE_MESSAGE_SEND,
+  SOCKET_MESSAGE,
 } from "../types/messengerType";
 
 const messengerState = {
@@ -36,6 +37,12 @@ export const messengerReducer = (state = messengerState, action) => {
       ...state,
       message: [...state.message, payload.message],
     };
+  }
+  if(type === SOCKET_MESSAGE){
+    return {
+      ...state,
+      message: [...state.message, payload.message],
+    }
   }
   return state;
 };
